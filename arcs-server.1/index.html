@@ -1,0 +1,48 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<style>
+  body, button {
+    font-family: sans-serif;
+    font-size: 10px;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
+
+<script type="module">
+  import '../../arcs/shell/build/ArcsLib.js';
+  import Arcs from '../../arcs/shell/app-shell/lib/arcs.js';
+  import {ArcFactory} from './arc-factory.js';
+  import {addUser} from './context.js';
+
+  const plan = () => {
+    const arcFactory = new ArcFactory();
+    const fileName = './in-memory.manifest';
+    const content = `
+  import 'https://$artifacts/canonical.manifest'
+  //import 'https://$artifacts/Arcs/Arcs.recipes'
+    `;
+    Arcs.Runtime.parseManifest(content, {loader: arcFactory.loader, fileName}).then(context => {
+      const arc = arcFactory.spawn(context);
+      const planner = createPlanner(arc);
+      emitPlans(planner);
+    });
+  };
+
+  const context = () => {
+    const providerFactory = new Arcs.StorageProviderFactory('shell');
+    const user = {
+      id: `-L8ZV2_gCxnL4SSz-16`,
+      arcs: [
+        `firebase://arcs-storage.firebaseio.com/AIzaSyBme42moeI-2k8WgXh-6YK_wYyjEXo4Oz8/0_4_1-alpha/arcs/-LM4CQVw-IND53H2q4i7`
+      ]
+    };
+    addUser(providerFactory, user);
+  };
+
+  context();
+</script>
+

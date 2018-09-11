@@ -1,4 +1,4 @@
-import firebase from './node_modules/firebase';
+import firebase from 'firebase';
 //console.log(firebase);
 
 const config = {
@@ -19,7 +19,7 @@ const app = firebase.initializeApp(config);
 const database = app.database();
 const db = database.ref(config.version);
 
-import {FbGraph} from './FbGraph.mjs';
+import {FbGraph} from './FbGraph.js';
 //console.log(FbGraph);
 
 // (async () => {

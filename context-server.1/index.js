@@ -79,7 +79,7 @@ const dump = () => {
 setTimeout(dump, 2000);
 //setInterval(dump, 10000);
 
-import express from './node_modules/express';
+import express from 'express';
 
 const app = express();
 app.get('/', (req, res) => {
@@ -112,7 +112,7 @@ app.get('/', (req, res) => {
   //});
   res.set('Content-Type', 'text/json');
   res.set('Access-Control-Allow-Origin', '*');
-  //res.send(JSON.stringify(world, null, '  '));
+  res.send(JSON.stringify(world, null, '  '));
   res.send(JSON.stringify(messages, null, '  '));
   messages = [];
 });
