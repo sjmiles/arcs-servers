@@ -1,8 +1,9 @@
 import {StorageProviderFactory} from '../../arcs/runtime/ts-build/storage/storage-provider-factory.js';
 import {addUser} from './context.js';
-//import {Manifest} from '../../arcs/runtime/manifest.js';
-//import {Planner} from '../../arcs/runtime/planner.js';
-//import {ArcFactory} from './arc-factory-node.js';
+
+import {Manifest} from '../../arcs/runtime/manifest.js';
+import {Planner} from '../../arcs/runtime/planner.js';
+import {ArcFactory} from './arc-factory-node.js';
 
 // init dependencies
 
@@ -23,7 +24,7 @@ const context = () => {
   addUser(providerFactory, user);
 };
 
-context();
+//context();
 
 const plan = () => {
   const arcFactory = new ArcFactory();
@@ -62,3 +63,4 @@ const emitPlans = async planner => {
   console.log('=================================');
 };
 
+plan();
